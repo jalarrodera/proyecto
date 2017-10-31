@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Your Name Here - Welcome</title>
+    <title>Bicibytes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">  
+    <meta name="author" content="Jesus Larrodera">  
 	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> <!-- Remove this Robots Meta Tag, to allow indexing of site -->
     
     <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,8 +48,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.html" id="divSiteTitle">Your Name Here</a><br />
-                        <a href="index.html" id="divTagLine">Your Tag Line Here</a>
+                        <a href="index.html" id="divSiteTitle">Bicibytes</a><br />
+                        <a href="index.html" id="divTagLine">Tu tienda de ciclismo</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -59,27 +59,27 @@
                         </button>
                         <div class="nav-collapse collapse">
                             <ul class="nav nav-pills ddmenu">
-                                <li class="dropdown active"><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="about.html">About</a></li>
+                                <li class="dropdown active"><a href="index.php">Inicio</a></li>
+								<li class="dropdown"><a href="about.html">Quienes somos</a></li>
                                 <li class="dropdown">
-                                    <a href="page.html" class="dropdown-toggle">Page <b class="caret"></b></a>
+                                    <a href="page.html" class="dropdown-toggle">Tienda <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                            <li><a href="full.html">Full Page</a></li>
-                            <li><a href="2-column.html">Two Column</a></li>
-                            <li><a href="3-column.html">Three Column</a></li>
-							<li><a href="../documentation/index.html">Documentation</a></li>
+                            <li><a href="full.html">Ropa</a></li>
+                            <li><a href="2-column.html">Herramientas</a></li>
+                            <li><a href="3-column.html">Componentes</a></li>
+							<li><a href="../documentation/index.html">Cascos</a></li>
 							<li class="dropdown">
-                            <a href="#" class="dropdown-toggle">Dropdown Item &nbsp;&raquo;</a>
+                            <a href="#" class="dropdown-toggle">Bicicletas &nbsp;&raquo;</a>
                             <ul class="dropdown-menu sub-menu">
-                            <li><a href="#">Dropdown Item</a></li>
-                            <li><a href="#">Dropdown Item</a></li>
-                            <li><a href="#">Dropdown Item</a></li>
+                            <li><a href="#">Bicicletas de carretera</a></li>
+                            <li><a href="#">Bicicletas de montaña</a></li>
+                            <li><a href="#">BMX</a></li>
                             </ul>
                             </li>
                             </ul>
                                 </li>
-                                <li class="dropdown"><a href="gallery.html">Gallery</a></li>
-                                <li class="dropdown"><a href="contact.php">Contact</a></li>
+                                <li class="dropdown"><a href="gallery.html">Nuestro equipo</a></li>
+                                <li class="dropdown"><a href="contact.php">Contacto</a></li>
                             </ul>
                         </div>
                     </div>
@@ -102,9 +102,9 @@
                         <div id="headerSeparator"></div>
 
                         <div id="divHeaderText" class="page-content">
-                            <div id="divHeaderLine1">Your Header Text Here!</div><br />
-                            <div id="divHeaderLine2">2nd line header text for calling extra attention to featured content..</div><br />
-                            <div id="divHeaderLine3"><a class="btn btn-large btn-primary" href="#">More Info</a></div>
+                            <div id="divHeaderLine1">Bicibytes</div><br />
+                            <div id="divHeaderLine2">Más de 10 años cuidando de tu bicicleta, cuidando de tí ...</div><br />
+                            <div id="divHeaderLine3"><a class="btn btn-large btn-primary" href="#">Más información</a></div>
                         </div>
 
                         <div id="headerSeparator2"></div>
@@ -127,75 +127,76 @@
 
                 <div class="span12" id="divMain">
 
-                    <h1>Welcome</h1>
+                    <h1>Bienvenido</h1>
 
-                    <p>Content on this page is for presentation purposes only. Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <p>Bicibytes es una tienda especializada en todas las modalidades de ciclismo. Fundada hace más de 10 años, 
+                        cuenta con uno de los equipos profesionales del sector mejor valorados del país.
                     </p>
 
                     <hr style="margin:45px 0 35px" />
 
                     <div class="lead">
-                        <h2>Lorem ipsum dolor sit amet.</h2> 
-                        <h3>Vivamus leo ante, consectetur sit amet vulputate vel, dapibus sit amet lectus.</h3>
+                        <h2>Nuestras marcas.</h2> 
+                        <h3>Trabajamos con las marcas más prestigiosas a nivel internacional.</h3>
                     </div>
                     <br />
 
                     <div class="list_carousel responsive">
                         <ul id="list_photos">
-                            <li><img src="images/carmel.jpg" class="img-polaroid">  </li>
-                            <li><img src="images/rula-sibai-pink-flowers.jpg" class="img-polaroid">  </li>
-                            <li><img src="images/girl-flowers.jpg" class="img-polaroid">  </li>
-                            <li><img src="images/night-city.jpg" class="img-polaroid">  </li>
-							<li><img src="images/irish-hands.jpg" class="img-polaroid">  </li>                            
-                            <li><img src="images/Top_view.jpg" class="img-polaroid">  </li>
-                            <li><img src="images/vectorbeastcom-grass-sun.jpg" class="img-polaroid">  </li>
-                            <li><img src="images/sunset-hair.jpg" class="img-polaroid">  </li>
-							<li><img src="images/stones-hi-res.jpg" class="img-polaroid">  </li>
-							<li><img src="images/salzburg-x.jpg" class="img-polaroid">  </li>
+                            <li><img src="images/trek.jpg" class="img-polaroid">  </li>
+                            <li><img src="images/giro.jpg" class="img-polaroid">  </li>
+                            <li><img src="images/look.jpg" class="img-polaroid">  </li>
+                            <li><img src="images/spiuk.jpg" class="img-polaroid">  </li>
+			    <li><img src="images/specialized.jpg" class="img-polaroid">  </li>                            
+                            <li><img src="images/michelin.jpg" class="img-polaroid">  </li>
                         </ul>
                     </div> 
 					
                     <hr style="margin:45px 0 35px" />
                     
                     <div class="lead">
-                        <h2>Featured Content.</h2> 
-                        <h3>Content on this page is for presentation purposes only.</h3>
+                        <h2>Taller</h2> 
+                        <h3>Ahora, también arreglamos tu bicicleta.</h3>
                     </div>
                     <br />
 
                     <div class="row-fluid">
                         <div class="span8">
 
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>         
+                            <h3>Te hacemos el mejor presupuesto sin ningún compromiso.</h3>         
 
                             <p>
-                                <img src="images/spring-is-coming.jpg" class="img-polaroid" style="margin:12px 0px;">  
+                                <img src="images/taller.jpg" class="img-polaroid" style="margin:12px 0px;">  
                             </p>
 							
-                            <p>Content on this page is for presentation purposes only. Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            <p>Bicibytes cuenta con uno de los mejores equipos de mecánicos, especializados en ciclismo, de todo el país.
+                                Arreglamos cualquier tipo de avería al mejor precio. Cada giro de tuerca, es tratado con el máximo nivel profesional. Acércate al local y te haremos un presupuesto personalizado
+                                sin ningún tipo de compromiso.
                             </p>
-                                                                                       
+                            
+                            <p>Además, si te apetece una limpieza integral de su bicicleta, no se preocupe y déjanosla a nosotros. 
+                               Nuestros profesionales se encargaran de que quede como nueva.                     
+                            </p>
+                            
+                            <p>Porque nos gusta cuidar de su bicicleta. Nos gusta cuidar de tí...                
+                            </p>                                                        
                         </div>
                         <div class="span4 sidebar">
 
                             <div class="sidebox">
-                                <h3 class="sidebox-title">Sample Sidebar Content</h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and <a href="#">typesetting industry</a>. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s.</p>                       
+                                <h3 class="sidebox-title">Máxima calidad.</h3>
+                             <p>
+                                <img src="images/mecanico.jpg" class="img-polaroid" style="margin:12px 0px;">  
+                            </p>                       
                             </div>
 
                             <br />
 
                             <div class="sidebox">
-                                <h3 class="sidebox-title">Sample Sidebar Content</h3>
-                                <p>
-                                    <div class="input-append">
-                                        <input class="span8" id="inpEmail" size="16" type="text"><button class="btn" type="button">Action</button>
-                                    </div>
-                                </p>                      
+                                <h3 class="sidebox-title">Profesionalidad</h3>
+                             <p>
+                                <img src="images/limpieza.jpg" class="img-polaroid" style="margin:12px 0px;">  
+                            </p>                   
                             </div>
 
                         </div>
@@ -221,9 +222,9 @@
             <div class="row-fluid">
                 <div class="span3" id="footerArea1">
                 
-                    <h3>About Company</h3>
+                    <h3>Sobre nosotros</h3>
 
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s.</p>
+                    <p>Tienda especializada en ciclismo fundada hace más de una década.</p>
                     
                     <p> 
                         <a href="#" title="Terms of Use">Terms of Use</a><br />
@@ -233,58 +234,31 @@
                     </p>
 
                 </div>
-                <div class="span3" id="footerArea2">
 
-                    <h3>Recent Blog Posts</h3> 
-                    <p>
-                        <a href="#" title="">Lorem Ipsum is simply dummy text</a><br />
-                        <span style="text-transform:none;">2 hours ago</span>
-                    </p>
-                    <p>
-                        <a href="#" title="">Duis mollis, est non commodo luctus</a><br />
-                        <span style="text-transform:none;">5 hours ago</span>
-                    </p>
-                    <p>
-                        <a href="#" title="">Maecenas sed diam eget risus varius</a><br />
-                        <span style="text-transform:none;">19 hours ago</span>
-                    </p>
-                    <p>
-                        <a href="#" title="">VIEW ALL POSTS</a>
-                    </p>
-
-                </div>
-                <div class="span3" id="footerArea3">
-
-                    <h3>Sample Content</h3> 
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s. 
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s.
-                    </p>
-
-                </div>
                 <div class="span3" id="footerArea4">
 
-                    <h3>Get in Touch</h3>  
+                    <h3>Contacta con nosotros:</h3>  
                                                                
                     <ul id="contact-info">
                     <li>                                    
                         <i class="general foundicon-phone icon"></i>
-                        <span class="field">Phone:</span>
+                        <span class="field">Teléfono:</span>
                         <br />
-                        (123) 456 7890 / 456 7891                                                                      
+                        976 000 000 / 600 000 000                                                                      
                     </li>
                     <li>
                         <i class="general foundicon-mail icon"></i>
                         <span class="field">Email:</span>
                         <br />
-                        <a href="mailto:info@yourdomain.com" title="Email">info@yourdomain.com</a>
+                        <a href="mailto:bicibytes@gmail.com" title="Email">bicibytes@gmail.com</a>
                     </li>
                     <li>
                         <i class="general foundicon-home icon" style="margin-bottom:50px"></i>
                         <span class="field">Address:</span>
                         <br />
-                        123 Street<br />
-                        12345 City, State<br />
-                        Country
+                        Calle Proyecto de los Enlaces, 1<br />
+                        50018 Zaragoza <br />
+                        España
                     </li>
                     </ul>
 
@@ -295,7 +269,7 @@
             <div class="row-fluid">
                 <div class="span12">
                     <p class="copyright">
-                        Copyright © 2013 Your Company. All Rights Reserved.
+                        Copyright © 2017 Bicibytes. All Rights Reserved.
                     </p>
 
                     <p class="social_bookmarks">
