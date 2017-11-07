@@ -1,13 +1,12 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Bicibytes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Jesus Larrodera">  
-	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> <!-- Remove this Robots Meta Tag, to allow indexing of site -->
-    
+    <meta name="author" content="">
+
     <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
@@ -28,7 +27,7 @@
         <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
     <![endif]-->
 
-<link href="scripts/carousel/style.css" rel="stylesheet" type="text/css" />
+
 
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
@@ -61,13 +60,13 @@
                             <ul class="nav nav-pills ddmenu">
                                 <li class="dropdown active"><a href="index.php">Inicio</a></li>
 				<li class="dropdown"><a href="about.php">Quienes somos</a></li>
-                            <li class="dropdown">
+                                <li class="dropdown">
                                     <a href="index.php" class="dropdown-toggle">Tienda <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="compras.php?tienda=ropa">Ropa</a></li>
                                         <li><a href="compras.php?tienda=herramientas">Herramientas</a></li>
                                         <li><a href="compras.php?tienda=componentes">Componentes</a></li>
-                                        <li><a href="compras.php?tienda=casco">Cascos</a></li>
+                                        <li><a href="compras.php?tienda=cascos">Cascos</a></li>
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle">Bicicletas &nbsp;&raquo;</a>
                                             <ul class="dropdown-menu sub-menu">
@@ -80,39 +79,13 @@
                                 </li>
                                 <li class="dropdown"><a href="plantilla.php">Nuestro equipo</a></li>
                                 <li class="dropdown"><a href="contact.php">Contacto</a></li>
-                                <li class="dropdown"><a href="acceso.php">Nuestro club</a></li>
                             </ul>
-
-                    </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-</div>
-<div id="decorative1" style="position:relative">
-    <div class="container">
-
-        <div class="divPanel headerArea">
-            <div class="row-fluid">
-                <div class="span12">
-
-                        <div id="headerSeparator"></div>
-
-                        <div id="divHeaderText" class="page-content">
-                            <div id="divHeaderLine1">Bicibytes</div><br />
-                            <div id="divHeaderLine2">Más de 10 años cuidando de tu bicicleta, cuidando de tí ...</div><br />
-                            <div id="divHeaderLine3"><a class="btn btn-large btn-primary" href="#">Más información</a></div>
                         </div>
-
-                        <div id="headerSeparator2"></div>
+                    </div>
+                    </div>
 
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -124,87 +97,42 @@
 
     <div class="divPanel page-content">
 
+        <div class="breadcrumbs">
+                <a href="index.php">Inicio</a> &nbsp;/&nbsp; <span>Nuestro equipo</span>
+            </div> 
+
         <div class="row-fluid">
+			<!--Edit Main Content Area here-->
+                <div class="span8" id="divMain">
 
-                <div class="span12" id="divMain">
+                    <h1>Nuestro equipo</h1>
+                    <hr>					
+                    <p><strong>Contamos con los mejores profesionales del sector.</strong></p>                                 
+										 
 
-                    <h1>Bienvenido</h1>
-
-                    <p>Bicibytes es una tienda especializada en todas las modalidades de ciclismo. Fundada hace más de 10 años, 
-                        cuenta con uno de los equipos profesionales del sector mejor valorados del país.
-                    </p>
-
-                    <hr style="margin:45px 0 35px" />
-
-                    <div class="lead">
-                        <h2>Nuestras marcas.</h2> 
-                        <h3>Trabajamos con las marcas más prestigiosas a nivel internacional.</h3>
-                    </div>
-                    <br />
-
-                    <div class="list_carousel responsive">
-                        <ul id="list_photos">
-                            <li><img src="images/trek.jpg" class="img-polaroid">  </li>
-                            <li><img src="images/giro.jpg" class="img-polaroid">  </li>
-                            <li><img src="images/look.jpg" class="img-polaroid">  </li>
-                            <li><img src="images/spiuk.jpg" class="img-polaroid">  </li>
-			    <li><img src="images/specialized.jpg" class="img-polaroid">  </li>                            
-                            <li><img src="images/michelin.jpg" class="img-polaroid">  </li>
-                        </ul>
-                    </div> 
-					
-                    <hr style="margin:45px 0 35px" />
+			<div class="row-fluid">		
+                            <a href="compras.php?tienda=ropa"><div class="span2"><h4>Ropa</h4></a>                           
+                            <img src="images/maillot.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">   </div>          
+                             <a href="compras.php?tienda=herramientas"><div class="span2"><h4>Herramientas</h4></a>                           
+                            <img src="images/allen.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">   </div>  
+                             <a href="compras.php?tienda=componentes"><div class="span2"><h4>Componentes</h4></a>                           
+                            <img src="images/cubierta.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">   </div>          
+                             <a href="compras.php?tienda=casco"><div class="span2"><h4>Cascos</h4></a>                           
+                            <img src="images/casco.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">   </div>   
+                        </div>
+                    	<div class="row-fluid">		
+                             <a href="compras.php?tienda=carretera"><div class="span2"><h4>Bicicletas de Carretera</h4></a>                           
+                            <img src="images/carretera.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">   </div>          
+                             <a href="compras.php?tienda=montana"><div class="span2"><h4>Bicicletas de Montaña</h4></a>                           
+                            <img src="images/montana.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">   </div>  
+                             <a href="compras.php?tienda=bmx"><div class="span2"><h4>Bicicletas BMX</h4></a>                           
+                            <img src="images/bmx.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">   </div>  
+                        </div>
                     
-                    <div class="lead">
-                        <h2>Taller</h2> 
-                        <h3>Ahora, también arreglamos tu bicicleta.</h3>
-                    </div>
-                    <br />
-
-                    <div class="row-fluid">
-                        <div class="span8">
-
-                            <h3>Te hacemos el mejor presupuesto sin ningún compromiso.</h3>         
-
-                            <p>
-                                <img src="images/taller.jpg" class="img-polaroid" style="margin:12px 0px;">  
-                            </p>
-							
-                            <p>Bicibytes cuenta con uno de los mejores equipos de mecánicos, especializados en ciclismo, de todo el país.
-                                Arreglamos cualquier tipo de avería al mejor precio. Cada giro de tuerca, es tratado con el máximo nivel profesional. Acércate al local y te haremos un presupuesto personalizado
-                                sin ningún tipo de compromiso.
-                            </p>
-                            
-                            <p>Además, si te apetece una limpieza integral de su bicicleta, no se preocupe y déjanosla a nosotros. 
-                               Nuestros profesionales se encargaran de que quede como nueva.                     
-                            </p>
-                            
-                            <p>Porque nos gusta cuidar de su bicicleta. Nos gusta cuidar de tí...                
-                            </p>                                                        
-                        </div>
-                        <div class="span4 sidebar">
-
-                            <div class="sidebox">
-                                <h3 class="sidebox-title">Máxima calidad.</h3>
-                             <p>
-                                <img src="images/mecanico.jpg" class="img-polaroid" style="margin:12px 0px;">  
-                            </p>                       
-                            </div>
-
-                            <br />
-
-                            <div class="sidebox">
-                                <h3 class="sidebox-title">Profesionalidad</h3>
-                             <p>
-                                <img src="images/limpieza.jpg" class="img-polaroid" style="margin:12px 0px;">  
-                            </p>                   
-                            </div>
-
-                        </div>
-                    </div>
-
+                     
                 </div>
-
+				<!--End Main Content Area here-->
+				
             </div>
 
         <div id="footerInnerSeparator"></div>
@@ -294,7 +222,7 @@
 <script src="scripts/default.js" type="text/javascript"></script>
 
 
-<script src="scripts/carousel/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script><script type="text/javascript">$('#list_photos').carouFredSel({ responsive: true, width: '100%', scroll: 2, items: {width: 320,visible: {min: 2, max: 6}} });</script>
+
 
 
 </body>

@@ -1,5 +1,13 @@
 ﻿<!DOCTYPE HTML>
 <html>
+    
+<?php 
+
+$tienda = $_GET['tienda'];
+
+
+?>
+
 <head>
     <meta charset="utf-8">
     <title>Bicibytes</title>
@@ -36,7 +44,6 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 
     <link href="styles/custom.css" rel="stylesheet" type="text/css" />
-	<script src="email/validation.js" type="text/javascript"></script>
 </head>
 <body id="pageBody">
 
@@ -80,9 +87,8 @@
                                 </li>
                                 <li class="dropdown"><a href="plantilla.php">Nuestro equipo</a></li>
                                 <li class="dropdown"><a href="contact.php">Contacto</a></li>
-                                <li class="dropdown"><a href="acceso.php">Nuestro club</a></li>
                             </ul>
-
+                        </div>
                     </div>
                     </div>
 
@@ -92,7 +98,6 @@
 
     </div>
 </div>
-</div>
 
 <div id="contentOuterSeparator"></div>
 
@@ -101,94 +106,79 @@
     <div class="divPanel page-content">
 
         <div class="breadcrumbs">
-                <a href="index.php">Inicio</a> &nbsp;/&nbsp; <span>Contacta con nosotros</span>
+                <a href="index.php">Inicio</a> &nbsp;/&nbsp; <span><?php echo $tienda ?></span>
             </div> 
 
         <div class="row-fluid">
+			<!--Edit Main Content Area here-->
                 <div class="span8" id="divMain">
-                    <h1>Contacta con nosotros</h1>
-<!--            ESTO LO HE COMENTADO YO        
-                    <h1>Contact Us</h1>
-                   	<h3 style="color:#FF6633;"><?php echo $_GET[msg];?></h3>    -->
-					<hr>
-			<!--Start Contact form -->		                                                
-<?php
-if (!isset($_POST['email'])) {
-?>
-  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-    <label>
-      Nombre:
-      <input name="nombre" type="text" />
-    </label>
-    <label>
-      Teléfono:
-      <input name="telefono" type="text" />
-    </label>
-    <label>
-      Email:
-      <input name="email" type="text" />
-    </label>
-    <label>
-      Mensaje:
-      <textarea name="mensaje" rows="6" cols="50"></textarea>
-    </label>
-    <input type="reset" value="Borrar" />
-    <input type="submit" value="Enviar" />
-  </form>
-<?php
-}else{
-  $mensaje="Mensaje del formulario de contacto de nnatali.com";
-  $mensaje.= "\nNombre: ". $_POST['nombre'];
-  $mensaje.= "\nEmail: ".$_POST['email'];
-  $mensaje.= "\nTelefono: ". $_POST['telefono'];
-  $mensaje.= "\nMensaje: \n".$_POST['mensaje'];
-  $destino= "jalarrodera@gmail.com";
-  $remitente = $_POST['email'];
-  $asunto = "Mensaje enviado por: ".$_POST['nombre'];
-  mail($destino,$asunto,$mensaje,"FROM: $remitente");
-?>
-  <p><strong>Mensaje enviado.</strong></p>
-<?php
-}
-?>			 
-			<!--End Contact form -->											 
-                </div>
-				
-			<!--Edit Sidebar Content here-->	
-                <div class="span4 sidebar">
 
-                    <div class="sidebox">
-                        <h3 class="sidebox-title">Contact Information</h3>
-                    <p>
-                        <address><strong>Your Company, Inc.</strong><br />
-                        Address<br />
-                        City, State, Zip<br />
-                        <abbr title="Phone">P:</abbr> (123) 456-7890</address> 
-                        <address>  <strong>Email</strong><br />
-                        <a href="mailto:#">first.last@gmail.com</a></address>  
-                    </p>     
-                     
-					 <!-- Start Side Categories -->
-        <h4 class="sidebox-title">Sidebar Categories</h4>
-        <ul>
-          <li><a href="#">Quisque diam lorem sectetuer adipiscing</a></li>
-          <li><a href="#">Interdum vitae, adipiscing dapibus ac</a></li>
-          <li><a href="#">Scelerisque ipsum auctor vitae, pede</a></li>
-          <li><a href="#">Donec eget iaculis lacinia non erat</a></li>
-          <li><a href="#">Lacinia dictum elementum velit fermentum</a></li>
-          <li><a href="#">Donec in velit vel ipsum auctor pulvinar</a></li>
-        </ul>
-					<!-- End Side Categories -->
-                    					
-                    </div>
-					
-					
+                    <?php switch ($tienda) {
+                        case "ropa":?>
+                    <h1>ROPA</h1>
+                    <?php break; ?>
+
                     
+                    
+                    <?php case "herramientas":?>
+                    <h1>HERRAMIENTAS</h1>
+                    <?php break; ?>
+                    
+                    
+                    
+                    
+                    <?php  case "componentes":?>
+                    <h1>COMPONENTES</h1>
+                    <?php break; ?>
+                    
+                    
+                    
+                    
+                    <?php case "casco":?>
+                    <h1>CASCOS</h1>
+                    <?php
+                    
+                    $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
+$resultado = $conexion->query("SELECT * from producto where categoria='casco'");
+while ($registro = $resultado->fetch()) {
+    ?><img src="<?php echo $registro['imagen']; ?>" width="10" /> <?php echo "</br>";
+    echo "Producto ".$registro['nombre']."</br>";
+    echo "Marca ".$registro['marca']."</br>";
+    echo "Stock ".$registro['stock']."</br>";
+    echo "PVP ".$registro['precio']."</br>";
+}
+
+?>
+                    
+                    
+                    
+                    
+                    <?php break; ?>
+                    
+                    
+                    
+                    
+                    <?php  case "carretera":?>
+                    <h1>BICICLETAS DE CARRETERA</h1>
+                    <?php break; ?>
+                    
+                    
+                    
+                    
+                    <?php  case "montana":?>
+                    <h1>BICICLETAS DE MONTAÑA</h1>
+                    <?php break; ?>
+                    
+                    
+                    
+                    
+                    <?php  case "bmx":?>
+                    <h1>BICICLETAS BMX</h1>
+                    <?php break; ?>
+                    <?php } ?>
                 </div>
-			<!--/End Sidebar Content-->
 				
-				
-            </div>			
+        </div>
 
         <div id="footerInnerSeparator"></div>
     </div>
