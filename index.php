@@ -227,13 +227,6 @@
 
                     <p>Tienda especializada en ciclismo fundada hace más de una década.</p>
                     
-                    <p> 
-                        <a href="#" title="Terms of Use">Terms of Use</a><br />
-                        <a href="#" title="Privacy Policy">Privacy Policy</a><br />
-                        <a href="#" title="FAQ">FAQ</a><br />
-                        <a href="#" title="Sitemap">Sitemap</a>
-                    </p>
-
                 </div>
 
                 <div class="span3" id="footerArea4">

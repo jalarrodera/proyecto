@@ -6,20 +6,19 @@ if (isset ($_SESSION['usuario']))
 $dir_subida = '/var/www/html/images/productos/';
 $fichero_subido = $dir_subida . basename($_FILES['fichero_usuario']['name']);
 
-echo '<pre>';
 if (move_uploaded_file($_FILES['fichero_usuario']['tmp_name'], $fichero_subido)) {
-    echo "El fichero es válido y se subió con éxito.\n";
+    echo "<b>El fichero es válido y se subió con éxito.\n </b>";
 } else {
-    echo "¡Posible ataque de subida de ficheros!\n";
+    echo "<b>¡Fallo al subir el fichero!\n </b>";
+    echo 'Más información de depuración:';
+print_r($_FILES);
 }
 
-echo 'Más información de depuración:';
-print_r($_FILES);
+
 
 print "</pre>";
-  
-  
-    $imagen = $fichero_subido;
+
+    $imagen = "images/productos/".$_FILES['fichero_usuario']['name'];
 
 $codigo = $_POST['codigo'];
 $nombre = $_POST['nombre'];
@@ -120,7 +119,7 @@ if ($conn->multi_query($sql) === TRUE) {
                         
 <?php
 
-//header( "refresh:5;url=admin.php" );
+header( "refresh:5;url=admin.php" );
 
 ?>
                     </div>

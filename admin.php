@@ -39,10 +39,7 @@ session_start();
                     <div class="row-fluid">
                         <div class="span12">
 
-                            <div id="divLogo" class="pull-left">
-                                <a href="#" id="divSiteTitle">Bicibytes</a><br />
-                                <a href="#" id="divTagLine">Tu tienda de ciclismo</a>
-                            </div>
+
                             <div id="divMenuRight" class="pull-right">
                                 <div class="navbar">
                                     <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
@@ -50,8 +47,13 @@ session_start();
                                     </button>
                                     <div class="nav-collapse collapse">
                                         <ul class="nav nav-pills ddmenu">
+                                            <li class="dropdown"><a href="gestionarProductos.php">Gestion de productos</a></li>
+                                            <li class="dropdown"><a href="gestionarProductos.php">Gestion de salidas</a></li>
                                             <li class="dropdown"><a href="leer.php">Mensajes</a></li>
                                             <li class="dropdown"><a href="historico.php">Histórico de mensajes</a></li>
+                                            <li class="dropdown"><a href="adminReservas.php">Reservas</a></li>
+                                            <li class="dropdown"><a href="historicoReservas.php">Historico de reservas</a></li>
+                                            
                                         </ul>
 
                                     </div>
@@ -100,9 +102,9 @@ session_start();
 
 
 
-                
-                
-                
+
+
+
                 <form role="form" name="acceso" enctype="multipart/form-data" action="admin.php" method="post">
                     <div class="form-group">
                         <label for="username">Acceso</label>
@@ -127,115 +129,20 @@ session_start();
                 }
                 ?>
             </div>
-                <?php
-            } else {
-                ?>
-
-
-            <div class="divPanel page-content">
-                <h2>INSERTAR UN PRODUCTO</h2>
-                <form role="form" name="acceso" action="insertar.php" method="post" enctype="multipart/form-data">
-                    <label for="codigo">Codigo del producto</label>
-                    <input type="text" class="form-control" id="username" name="codigo" required>
-                    <label for="nombre">Nombre del Producto</label>
-                    <input type="text" class="form-control" id="password" name="nombre" required>
-                    <label for="precio">Precio del producto</label>
-                    <input type="text" class="form-control" id="username" name="precio" required>
-                    <label for="stock">Stock</label>
-                    <input type="text" class="form-control" id="password" name="stock" required>
-                    <label for="descuento">Descuento</label>
-                    <input type="text" class="form-control" id="username" name="descuento" required>
-                    <p>
-                        Categoria
-                    <p>
-    <?php
-    $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
-    $resultado = $conexion->query("SELECT * FROM categoria");
-    echo "<select name='categoria'>";
-    while ($registro = $resultado->fetch()) {
-
-        echo "<option value='" . $registro['categoria'] . "'>" . $registro['categoria'] . "</option>";
-    }
-    echo "</select>";
-    ?>
-                    <p>
-
-
-                        <label for="marca">Marca</label>
-                        <input type="text" class="form-control" id="username" name="marca" required>
-
-
-    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-    Enviar este fichero: <input name="fichero_usuario" type="file" />
+            <?php
+        } else {
+            ?>
 
 
 
-
-
-                        <br><button type="submit" name="insertar" class="btn btn-default">insertar</button>
-                </form>
-                <h2>ACTUALIZAR UN PRODUCTO</h2>
-                <form role="form" name="editar" action="editar.php" method="post">      
-                    <select name="seleccion">
-    <?php
-    $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
-    $resultado = $conexion->query("SELECT * from producto;");
-    while ($registro = $resultado->fetch()) {
-        ?><option value="<?php echo $registro['nombre'] ?>"> <?php echo $registro['nombre'] ?> </option> <?php
-                        }
-                        ?> 
-                    </select>
-                    <label for="precio">Precio del producto</label>
-                    <input type="text" class="form-control" id="username" name="precio" required>
-                    <label for="stock">Stock</label>
-                    <input type="text" class="form-control" id="password" name="stock" required>
-                    <label for="descuento">Descuento</label>
-                    <input type="text" class="form-control" id="username" name="descuento" required>
-                    <p>
-                        Categoria
-                    <p>
-    <?php
-    $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
-    $resultado = $conexion->query("SELECT * FROM categoria");
-    echo "<select name='categoria'>";
-    while ($registro = $resultado->fetch()) {
-
-        echo "<option value='" . $registro['categoria'] . "'>" . $registro['categoria'] . "</option>";
-    }
-    echo "</select>";
-    ?>
-                    <p>
-                        <label for="marca">Marca</label>
-                        <input type="text" class="form-control" id="username" name="marca" required>
-                        <br><button type="submit" name="editar" class="btn btn-default">Editar</button>
-                </form>
-
-                <h2>ELIMINAR UN PRODUCTO</h2>
-                <form role="form" name="eliminar" action="eliminar.php" method="post">      
-                    <select name="seleccion">
-    <?php
-    $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
-    $resultado = $conexion->query("SELECT * from producto;");
-    while ($registro = $resultado->fetch()) {
-        ?><option value="<?php echo $registro['nombre'] ?>"> <?php echo $registro['nombre'] ?> </option> <?php
-                        }
-                        ?> 
-                    </select>
-
-                    <br><button type="submit" name="eliminar" class="btn btn-default">Eliminar</button>
-                </form>
-
-            </div>
 
         </div>
 
 
 
-    <?php
-}
-?>
+        <?php
+    }
+    ?>
 
 
 </body>

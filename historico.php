@@ -59,10 +59,6 @@ $conn->close();
                     <div class="row-fluid">
                         <div class="span12">
 
-                            <div id="divLogo" class="pull-left">
-                                <a href="admin.php" id="divSiteTitle">Bicibytes</a><br />
-                                <a href="admin.php" id="divTagLine">Tu tienda de ciclismo</a>
-                            </div>
                             <div id="divMenuRight" class="pull-right">
                                 <div class="navbar">
                                     <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
@@ -70,8 +66,12 @@ $conn->close();
                                     </button>
                                     <div class="nav-collapse collapse">
                                         <ul class="nav nav-pills ddmenu">
+                                            <li class="dropdown"><a href="gestionarProductos.php">Gestion de productos</a></li>
+                                            <li class="dropdown"><a href="gestionarSalidas.php">Gestion de salidas</a></li>
                                             <li class="dropdown"><a href="leer.php">Mensajes</a></li>
                                             <li class="dropdown"><a href="historico.php">Histórico de mensajes</a></li>
+                                            <li class="dropdown"><a href="adminReservas.php">Reservas</a></li>
+                                            <li class="dropdown"><a href="historicoReservas.php">Historico de reservas</a></li>
                                         </ul>
 
                                     </div>
@@ -88,9 +88,6 @@ $conn->close();
 
             <div class="divPanel page-content">
 
-                <div class="breadcrumbs">
-                    <a href="index.php">Inicio</a> &nbsp;/&nbsp; <span>Nuestro equipo</span>
-                </div> 
 
                 <div class="row-fluid">
                     <!--Edit Main Content Area here-->

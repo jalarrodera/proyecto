@@ -3,6 +3,9 @@
 
     <?php
     $tienda = $_GET['tienda'];
+    if (isset($_POST['hola'])) {
+        echo $_POST['hola'];
+    }
     ?>
 
     <head>
@@ -44,59 +47,59 @@
     </head>
     <body id="pageBody">
 
-<div id="decorative2">
-    <div class="container">
+        <div id="decorative2">
+            <div class="container">
 
-        <div class="divPanel topArea notop nobottom">
-            <div class="row-fluid">
-                <div class="span12">
+                <div class="divPanel topArea notop nobottom">
+                    <div class="row-fluid">
+                        <div class="span12">
 
-                    <div id="divLogo" class="pull-left">
-                        <a href="index.php" id="divSiteTitle">Bicibytes</a><br />
-                        <a href="index.php" id="divTagLine">Tu tienda de ciclismo</a>
-                    </div>
+                            <div id="divLogo" class="pull-left">
+                                <a href="index.php" id="divSiteTitle">Bicibytes</a><br />
+                                <a href="index.php" id="divTagLine">Tu tienda de ciclismo</a>
+                            </div>
 
-                    <div id="divMenuRight" class="pull-right">
-                    <div class="navbar">
-                        <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
-                            NAVIGATION <span class="icon-chevron-down icon-white"></span>
-                        </button>
-                        <div class="nav-collapse collapse">
-                            <ul class="nav nav-pills ddmenu">
-                                <li class="dropdown active"><a href="index.php">Inicio</a></li>
-				<li class="dropdown"><a href="about.php">Quienes somos</a></li>
-                            <li class="dropdown">
-                                    <a href="index.php" class="dropdown-toggle">Tienda <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="compras.php?tienda=ropa">Ropa</a></li>
-                                        <li><a href="compras.php?tienda=herramientas">Herramientas</a></li>
-                                        <li><a href="compras.php?tienda=componentes">Componentes</a></li>
-                                        <li><a href="compras.php?tienda=casco">Cascos</a></li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle">Bicicletas &nbsp;&raquo;</a>
-                                            <ul class="dropdown-menu sub-menu">
-                                            <li><a href="compras.php?tienda=carretera">Bicicletas de carretera</a></li>
-                                            <li><a href="compras.php?tienda=montana">Bicicletas de montaña</a></li>
-                                            <li><a href="compras.php?tienda=bmx">BMX</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="plantilla.php">Nuestro equipo</a></li>
-                                <li class="dropdown"><a href="contact.php">Contacto</a></li>
-                                <li class="dropdown"><a href="acceso.php">Nuestro club</a></li>
-                            </ul>
+                            <div id="divMenuRight" class="pull-right">
+                                <div class="navbar">
+                                    <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
+                                        NAVIGATION <span class="icon-chevron-down icon-white"></span>
+                                    </button>
+                                    <div class="nav-collapse collapse">
+                                        <ul class="nav nav-pills ddmenu">
+                                            <li class="dropdown active"><a href="index.php">Inicio</a></li>
+                                            <li class="dropdown"><a href="about.php">Quienes somos</a></li>
+                                            <li class="dropdown">
+                                                <a href="index.php" class="dropdown-toggle">Tienda <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="compras.php?tienda=ropa">Ropa</a></li>
+                                                    <li><a href="compras.php?tienda=herramientas">Herramientas</a></li>
+                                                    <li><a href="compras.php?tienda=componentes">Componentes</a></li>
+                                                    <li><a href="compras.php?tienda=casco">Cascos</a></li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle">Bicicletas &nbsp;&raquo;</a>
+                                                        <ul class="dropdown-menu sub-menu">
+                                                            <li><a href="compras.php?tienda=carretera">Bicicletas de carretera</a></li>
+                                                            <li><a href="compras.php?tienda=montana">Bicicletas de montaña</a></li>
+                                                            <li><a href="compras.php?tienda=bmx">BMX</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown"><a href="plantilla.php">Nuestro equipo</a></li>
+                                            <li class="dropdown"><a href="contact.php">Contacto</a></li>
+                                            <li class="dropdown"><a href="acceso.php">Nuestro club</a></li>
+                                        </ul>
 
-                    </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
-
-    </div>
-</div>
-</div>
 
         <div id="contentOuterSeparator"></div>
 
@@ -111,7 +114,7 @@
                 <div class="row-fluid">
                     <!--Edit Main Content Area here-->
                     <div class="span8" id="divMain">
-
+                        <h1>¡No olvides pasarte por la tienda a ver nuestros productos!</h1>
                         <?php
                         switch ($tienda) {
                             case "ropa":
@@ -121,27 +124,38 @@
                                 $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
                                 $resultado = $conexion->query("SELECT * from producto where categoria='ropa'");
                                 while ($registro = $resultado->fetch()) {
+
                                     echo "<table border=1><tr><td>";
-                                    if ($registro['imagen'] == null){
+                                    if ($registro['imagen'] == null) {
                                         ?> <img src="images/no_imagen.jpg" class="img-polaroid"> <?php
                                     }
-                                    ?><img src="<?php echo $registro['imagen']; ?>" width="10" /> <?php
+                                    ?><img src="<?php echo $registro['imagen']; ?>" /> <?php
                                     echo "</br>";
                                     echo "<b>Producto: </b>" . $registro['nombre'] . "</br>";
                                     echo "<b>Marca: </b> " . $registro['marca'] . "</br>";
-                                    if ($registro['stock'] <=0){
-                                        echo "<b><font color='red'>¡No quedan unidades!</b></br>";
-                                    }else{
-                                    echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
+                                    if ($registro['stock'] <= 0) {
+                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>";
+                                    } else {
+                                        echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
                                     }
-                                    if ($registro['descuento'] > 0){
-                                    echo "<b><font color='red'>¡Éste artículo tiene un ".$registro['descuento']."% de descuento!</font></b></br>";
+                                    if ($registro['descuento'] > 0) {
+                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";
                                     }
-                                    echo "<b>PVP: </b> " .($registro['precio']-($registro['precio']*$registro['descuento'])/100) . " €</br>";
+                                    echo "<b>PVP: </b> " . ($registro['precio'] - ($registro['precio'] * $registro['descuento']) / 100) . " €</br>";
                                     echo "</td></tr></table></br>";
+                                    if ($registro['stock'] > 0) {
+                                        ?>
+                                        <form role="form" name="reservas" action="reservas.php" method="post">  
+                                            <input type="hidden" value="<?php echo $registro['codigo'] ?>" name="codigo">
+                                            <input type="hidden" value="<?php echo $registro['nombre'] ?>" name="producto">
+                                            <input type="submit" value="reservar">
+                                        </form>
+
+                                        <?php
+                                    }
                                 }
+                                break;
                                 ?>
-        <?php break; ?>
 
 
 
@@ -149,29 +163,40 @@
                                 <h1>HERRAMIENTAS</h1>
                                 <?php
                                 $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
-                                $resultado = $conexion->query("SELECT * from producto where categoria='herramienta'");
+                                $resultado = $conexion->query("SELECT * from producto where categoria='herramientas'");
                                 while ($registro = $resultado->fetch()) {
+
                                     echo "<table border=1><tr><td>";
-                                    if ($registro['imagen'] == null){
+                                    if ($registro['imagen'] == null) {
                                         ?> <img src="images/no_imagen.jpg" class="img-polaroid"> <?php
                                     }
-                                    ?><img src="<?php echo $registro['imagen']; ?>" width="10" /> <?php
+                                    ?><img src="<?php echo $registro['imagen']; ?>" /> <?php
                                     echo "</br>";
                                     echo "<b>Producto: </b>" . $registro['nombre'] . "</br>";
                                     echo "<b>Marca: </b> " . $registro['marca'] . "</br>";
-                                    if ($registro['stock'] <=0){
-                                        echo "<b><font color='red'>¡No quedan unidades!</b></br>";
-                                    }else{
-                                    echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
+                                    if ($registro['stock'] <= 0) {
+                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>";
+                                    } else {
+                                        echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
                                     }
-                                    if ($registro['descuento'] > 0){
-                                    echo "<b><font color='red'>¡Éste artículo tiene un ".$registro['descuento']."% de descuento!</font></b></br>";
+                                    if ($registro['descuento'] > 0) {
+                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";
                                     }
-                                    echo "<b>PVP: </b> " .($registro['precio']-($registro['precio']*$registro['descuento'])/100) . " €</br>";
+                                    echo "<b>PVP: </b> " . ($registro['precio'] - ($registro['precio'] * $registro['descuento']) / 100) . " €</br>";
                                     echo "</td></tr></table></br>";
+                                    if ($registro['stock'] > 0) {
+                                        ?>
+                                        <form role="form" name="reservas" action="reservas.php" method="post">  
+                                            <input type="hidden" value="<?php echo $registro['codigo'] ?>" name="codigo">
+                                            <input type="hidden" value="<?php echo $registro['nombre'] ?>" name="producto">
+                                            <input type="submit" value="reservar">
+                                        </form>
+
+                                        <?php
+                                    }
                                 }
+                                break;
                                 ?>
-        <?php break; ?>
 
 
 
@@ -180,61 +205,83 @@
                                 <h1>COMPONENTES</h1>
                                 <?php
                                 $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
-                                $resultado = $conexion->query("SELECT * from producto where categoria='componente'");
+                                $resultado = $conexion->query("SELECT * from producto where categoria='componentes'");
                                 while ($registro = $resultado->fetch()) {
+
                                     echo "<table border=1><tr><td>";
-                                    if ($registro['imagen'] == null){
+                                    if ($registro['imagen'] == null) {
                                         ?> <img src="images/no_imagen.jpg" class="img-polaroid"> <?php
                                     }
-                                    ?><img src="<?php echo $registro['imagen']; ?>" width="10" /> <?php
+                                    ?><img src="<?php echo $registro['imagen']; ?>" /> <?php
                                     echo "</br>";
                                     echo "<b>Producto: </b>" . $registro['nombre'] . "</br>";
                                     echo "<b>Marca: </b> " . $registro['marca'] . "</br>";
-                                    if ($registro['stock'] <=0){
-                                        echo "<b><font color='red'>¡No quedan unidades!</b></br>";
-                                    }else{
-                                    echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
+                                    if ($registro['stock'] <= 0) {
+                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>";
+                                    } else {
+                                        echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
                                     }
-                                    if ($registro['descuento'] > 0){
-                                    echo "<b><font color='red'>¡Éste artículo tiene un ".$registro['descuento']."% de descuento!</font></b></br>";
+                                    if ($registro['descuento'] > 0) {
+                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";
                                     }
-                                    echo "<b>PVP: </b> " .($registro['precio']-($registro['precio']*$registro['descuento'])/100) . " €</br>";
+                                    echo "<b>PVP: </b> " . ($registro['precio'] - ($registro['precio'] * $registro['descuento']) / 100) . " €</br>";
                                     echo "</td></tr></table></br>";
+                                    if ($registro['stock'] > 0) {
+                                        ?>
+                                        <form role="form" name="reservas" action="reservas.php" method="post">  
+                                            <input type="hidden" value="<?php echo $registro['codigo'] ?>" name="codigo">
+                                            <input type="hidden" value="<?php echo $registro['nombre'] ?>" name="producto">
+                                            <input type="submit" value="reservar">
+                                        </form>
+
+                                        <?php
+                                    }
                                 }
+                                break;
                                 ?>
-        <?php break; ?>
 
 
 
 
                             <?php case "casco": ?>
                                 <h1>CASCOS</h1>
+
                                 <?php
                                 $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
                                 $resultado = $conexion->query("SELECT * from producto where categoria='casco'");
                                 while ($registro = $resultado->fetch()) {
+
                                     echo "<table border=1><tr><td>";
-                                    if ($registro['imagen'] == null){
+                                    if ($registro['imagen'] == null) {
                                         ?> <img src="images/no_imagen.jpg" class="img-polaroid"> <?php
                                     }
-                                    ?><img src="<?php echo $registro['imagen']; ?>" width="10" /> <?php
+                                    ?><img src="<?php echo $registro['imagen']; ?>" /> <?php
                                     echo "</br>";
                                     echo "<b>Producto: </b>" . $registro['nombre'] . "</br>";
                                     echo "<b>Marca: </b> " . $registro['marca'] . "</br>";
-                                    if ($registro['stock'] <=0){
-                                        echo "<b><font color='red'>¡No quedan unidades!</b></br>";
-                                    }else{
-                                    echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
+                                    if ($registro['stock'] <= 0) {
+                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>";
+                                    } else {
+                                        echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
                                     }
-                                    if ($registro['descuento'] > 0){
-                                    echo "<b><font color='red'>¡Éste artículo tiene un ".$registro['descuento']."% de descuento!</font></b></br>";
+                                    if ($registro['descuento'] > 0) {
+                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";
                                     }
-                                    echo "<b>PVP: </b> " .($registro['precio']-($registro['precio']*$registro['descuento'])/100) . " €</br>";
+                                    echo "<b>PVP: </b> " . ($registro['precio'] - ($registro['precio'] * $registro['descuento']) / 100) . " €</br>";
                                     echo "</td></tr></table></br>";
-                                }
-                                ?>
+                                    if ($registro['stock'] > 0) {
+                                        ?>
+                                        <form role="form" name="reservas" action="reservas.php" method="post">  
+                                            <input type="hidden" value="<?php echo $registro['codigo'] ?>" name="codigo">
+                                            <input type="hidden" value="<?php echo $registro['nombre'] ?>" name="producto">
+                                            <input type="submit" value="reservar">
+                                        </form>
 
-        <?php break; ?>
+                                        <?php
+                                    }
+                                }
+                                break;
+                                ?>
 
 
 
@@ -245,27 +292,38 @@
                                 $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
                                 $resultado = $conexion->query("SELECT * from producto where categoria='carretera'");
                                 while ($registro = $resultado->fetch()) {
+
                                     echo "<table border=1><tr><td>";
-                                    if ($registro['imagen'] == null){
+                                    if ($registro['imagen'] == null) {
                                         ?> <img src="images/no_imagen.jpg" class="img-polaroid"> <?php
                                     }
-                                    ?><img src="<?php echo $registro['imagen']; ?>" width="10" /> <?php
+                                    ?><img src="<?php echo $registro['imagen']; ?>" /> <?php
                                     echo "</br>";
                                     echo "<b>Producto: </b>" . $registro['nombre'] . "</br>";
                                     echo "<b>Marca: </b> " . $registro['marca'] . "</br>";
-                                    if ($registro['stock'] <=0){
-                                        echo "<b><font color='red'>¡No quedan unidades!</b></br>";
-                                    }else{
-                                    echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
+                                    if ($registro['stock'] <= 0) {
+                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>";
+                                    } else {
+                                        echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
                                     }
-                                    if ($registro['descuento'] > 0){
-                                    echo "<b><font color='red'>¡Éste artículo tiene un ".$registro['descuento']."% de descuento!</font></b></br>";
+                                    if ($registro['descuento'] > 0) {
+                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";
                                     }
-                                    echo "<b>PVP: </b> " .($registro['precio']-($registro['precio']*$registro['descuento'])/100) . " €</br>";
+                                    echo "<b>PVP: </b> " . ($registro['precio'] - ($registro['precio'] * $registro['descuento']) / 100) . " €</br>";
                                     echo "</td></tr></table></br>";
+                                    if ($registro['stock'] > 0) {
+                                        ?>
+                                        <form role="form" name="reservas" action="reservas.php" method="post">  
+                                            <input type="hidden" value="<?php echo $registro['codigo'] ?>" name="codigo">
+                                            <input type="hidden" value="<?php echo $registro['nombre'] ?>" name="producto">
+                                            <input type="submit" value="reservar">
+                                        </form>
+
+                                        <?php
+                                    }
                                 }
+                                break;
                                 ?>
-        <?php break; ?>
 
 
 
@@ -276,27 +334,38 @@
                                 $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
                                 $resultado = $conexion->query("SELECT * from producto where categoria='montana'");
                                 while ($registro = $resultado->fetch()) {
+
                                     echo "<table border=1><tr><td>";
-                                    if ($registro['imagen'] == null){
+                                    if ($registro['imagen'] == null) {
                                         ?> <img src="images/no_imagen.jpg" class="img-polaroid"> <?php
                                     }
-                                    ?><img src="<?php echo $registro['imagen']; ?>" width="10" /> <?php
+                                    ?><img src="<?php echo $registro['imagen']; ?>" /> <?php
                                     echo "</br>";
                                     echo "<b>Producto: </b>" . $registro['nombre'] . "</br>";
                                     echo "<b>Marca: </b> " . $registro['marca'] . "</br>";
-                                    if ($registro['stock'] <=0){
-                                        echo "<b><font color='red'>¡No quedan unidades!</b></br>";
-                                    }else{
-                                    echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
+                                    if ($registro['stock'] <= 0) {
+                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>";
+                                    } else {
+                                        echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
                                     }
-                                    if ($registro['descuento'] > 0){
-                                    echo "<b><font color='red'>¡Éste artículo tiene un ".$registro['descuento']."% de descuento!</font></b></br>";
+                                    if ($registro['descuento'] > 0) {
+                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";
                                     }
-                                    echo "<b>PVP: </b> " .($registro['precio']-($registro['precio']*$registro['descuento'])/100) . " €</br>";
+                                    echo "<b>PVP: </b> " . ($registro['precio'] - ($registro['precio'] * $registro['descuento']) / 100) . " €</br>";
                                     echo "</td></tr></table></br>";
-                                }
-                                ?>
-        <?php break; ?>
+                                    if ($registro['stock'] > 0) {
+                                        ?>
+                                        <form role="form" name="reservas" action="reservas.php" method="post">  
+                                            <input type="hidden" value="<?php echo $registro['codigo'] ?>" name="codigo">
+                                            <input type="hidden" value="<?php echo $registro['nombre'] ?>" name="producto">
+                                            <input type="submit" value="reservar">
+                                        </form>
+
+                <?php
+            }
+        }
+        break;
+        ?>
 
 
 
@@ -307,27 +376,38 @@
                                 $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
                                 $resultado = $conexion->query("SELECT * from producto where categoria='bmx'");
                                 while ($registro = $resultado->fetch()) {
+
                                     echo "<table border=1><tr><td>";
-                                    if ($registro['imagen'] == null){
+                                    if ($registro['imagen'] == null) {
                                         ?> <img src="images/no_imagen.jpg" class="img-polaroid"> <?php
                                     }
-                                    ?><img src="<?php echo $registro['imagen']; ?>" width="10" /> <?php
+                                    ?><img src="<?php echo $registro['imagen']; ?>" /> <?php
                                     echo "</br>";
                                     echo "<b>Producto: </b>" . $registro['nombre'] . "</br>";
                                     echo "<b>Marca: </b> " . $registro['marca'] . "</br>";
-                                    if ($registro['stock'] <=0){
-                                        echo "<b><font color='red'>¡No quedan unidades!</b></br>";
-                                    }else{
-                                    echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
+                                    if ($registro['stock'] <= 0) {
+                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>";
+                                    } else {
+                                        echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
                                     }
-                                    if ($registro['descuento'] > 0){
-                                    echo "<b><font color='red'>¡Éste artículo tiene un ".$registro['descuento']."% de descuento!</font></b></br>";
+                                    if ($registro['descuento'] > 0) {
+                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";
                                     }
-                                    echo "<b>PVP: </b> " .($registro['precio']-($registro['precio']*$registro['descuento'])/100) . " €</br>";
+                                    echo "<b>PVP: </b> " . ($registro['precio'] - ($registro['precio'] * $registro['descuento']) / 100) . " €</br>";
                                     echo "</td></tr></table></br>";
-                                }
-                                ?>
-                                <?php break; ?>
+                                    if ($registro['stock'] > 0) {
+                                        ?>
+                                        <form role="form" name="reservas" action="reservas.php" method="post">  
+                                            <input type="hidden" value="<?php echo $registro['codigo'] ?>" name="codigo">
+                                            <input type="hidden" value="<?php echo $registro['nombre'] ?>" name="producto">
+                                            <input type="submit" value="reservar">
+                                        </form>
+
+                <?php
+            }
+        }
+        break;
+        ?>
 <?php } ?>
                     </div>
 
