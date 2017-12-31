@@ -1,3 +1,4 @@
+<!-- Accederemos despues de logearnos como socios. Aqui podemos ver las salidas del club.-->
 <?php
 session_start(); //Iniciamos la Sesion o la Continuamos
 if (isset($_SESSION['usuario'])) {
@@ -45,6 +46,7 @@ if (isset($_SESSION['usuario'])) {
                             </div>
 
                         </div>
+                        <!--Mostramos el calendario de salidas-->
                         <h1>Calendario de salidas <?php
                             echo date("Y");
                             ?> </h1>

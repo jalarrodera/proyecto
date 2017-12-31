@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE HTML>
-<?php error_reporting(E_ALL ^ E_NOTICE); 
+<!-- Pagina de acceso a la plataforma de socios. Por un lado permite acceder con un formulario, y por otro permite resgistrar nuevos socios -->
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
 
 session_start(); //Iniciamos o Continuamos la sesion
-if (isset($_POST['acceso'])) //Si llego un Nickname via el formulario lo grabamos en la Sesion
-{
-	$_SESSION['usuario'] = $_POST['username']; //Nickname Grabado
+if (isset($_POST['acceso'])) { //Si llego un usuario via el formulario lo grabamos en la Sesion
+    $_SESSION['usuario'] = $_POST['username']; //usuario Grabado
 }
 ?>
 <html>
@@ -30,6 +31,9 @@ if (isset($_POST['acceso'])) //Si llego un Nickname via el formulario lo grabamo
     </head>
     <body id="pageBody">
         <?php
+        //Si hemos intentado logearnos, se realiza una consulta contra la base de datos para comprobar si el usuario y la contraseña es correcta.
+        //La contraseña está encriptada, por lo que se utilizará la codificacion md5. 
+        //Si el acceso es correcto, redireccionamos a club.php
         if (isset($_POST["acceso"])) {
             $nombre = $_POST['username'];
             $password = $_POST['password'];
@@ -79,7 +83,7 @@ if (isset($_POST['acceso'])) //Si llego un Nickname via el formulario lo grabamo
                         <br />
 
                         <h2>Login</h2>
-
+                        <!-- Formulario de login -->
                         <form role="form" name="acceso" action="#" method="post">
                             <div class="form-group">
                                 <label for="username">Acceso</label>
@@ -99,6 +103,7 @@ if (isset($_POST['acceso'])) //Si llego un Nickname via el formulario lo grabamo
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <h3 id="myModalLabel">Formulario de registro</h3>
                             </div>
+                            <!-- Formulario de registro. Si todos los campos están rellenados correctamente, nos lleva a la página registro_socios.php para darlo de alta en la base de datos -->                        
                             <form role="form" name="registro" action="registro_socio.php" method="post">
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
@@ -116,14 +121,14 @@ if (isset($_POST['acceso'])) //Si llego un Nickname via el formulario lo grabamo
                                     <label for="confirm_password">Confirmar Contrase&ntilde;a</label>
                                     <input type="password" class="form-control" id="confirm_password" name="confirm_password">
                                 </div>                
-
+                                <input type="hidden" value="socio" id="rol" name="rol">
                                 <button type="submit" name="registro" class="btn btn-default">registro</button>
                                 <script src="js/valida_registro.js"></script>
                             </form>
 
 
                         </div>
-
+                        <!-- Botón que nos lleva al formulario de registro -->
                         <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Házte socio</a>
 
                         <br /><br />

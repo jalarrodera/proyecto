@@ -1,10 +1,11 @@
-	
+<!--  Pagina de administración de la plataforma-->
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 ?>
 
 <html>
+
     <head>
         <meta charset="utf-8">
         <title>Bicibytes</title>
@@ -31,7 +32,7 @@ session_start();
         <link href="styles/custom.css" rel="stylesheet" type="text/css" />
     </head>
     <body id="pageBody">
-
+        <!-- Cabecera de la plataforma de administración. Contiene el enlace a las diferentes secciones en un menú ul, igual que en la plataforma de tienda. -->
         <div id="decorative2">
             <div class="container">
 
@@ -53,7 +54,7 @@ session_start();
                                             <li class="dropdown"><a href="historico.php">Histórico de mensajes</a></li>
                                             <li class="dropdown"><a href="adminReservas.php">Reservas</a></li>
                                             <li class="dropdown"><a href="historicoReservas.php">Historico de reservas</a></li>
-                                            
+
                                         </ul>
 
                                     </div>
@@ -104,7 +105,7 @@ session_start();
 
 
 
-
+                <!--  Formulario de acceso de administrador -->
                 <form role="form" name="acceso" enctype="multipart/form-data" action="admin.php" method="post">
                     <div class="form-group">
                         <label for="username">Acceso</label>
@@ -118,6 +119,7 @@ session_start();
                     <button type="submit" name="acceso" class="btn btn-default">Acceder</button>
                 </form>
                 <?php
+                //Conectamos con la base de datos y comprobamos que el login es correcto
                 if (isset($_POST["acceso"])) {
                     $nombre = $_POST['username'];
                     $password = $_POST['password'];

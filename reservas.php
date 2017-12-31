@@ -1,5 +1,8 @@
 ﻿<!DOCTYPE HTML>
-<?php
+ <!--Página que gestiona las reservas-->
+     
+     <?php
+     //cogemos los datos del formulario
 $nombre = $_POST["producto"];
 $codigo = $_POST["codigo"];
 ?>
@@ -10,29 +13,11 @@ $codigo = $_POST["codigo"];
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <!-- Icons -->
         <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
         <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
-        <!--[if lt IE 8]>
-            <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-            <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-        <![endif]-->
         <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
-        <!--[if IE 7]>
-            <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
-        <![endif]-->
-
-
-
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Palatino+Linotype" rel="stylesheet" type="text/css">
@@ -85,14 +70,40 @@ $codigo = $_POST["codigo"];
                         <?php
                         ?>
                         <h2> ¿Seguro que quiere reservar el producto <?php echo $nombre ?> ? </h2>           
-
+ <!--Formulario que recoge los datos del cliente que realiza la reserva. Si confirma la reserva, nos lleva a hagoReserva.php para insertarla en la base de datos-->
                         <form role="form" name="reserva" action="hagoReserva.php" method="post">  
                             <p>Nombre: <input type="text" name="cliente" required></p>
-                            <p>DNI <input type="text" name="dni" required></p>
+                            <p>Email <input type="email" name="email" required></p>
                             <input type="hidden" value="<?php echo $codigo ?>" name="producto">
                             <input type="submit" value="reservar">
                         </form>
+ <!-- Si no es cliente, nos deja registrarnos como cliente para poder realizar la reserva. 
+ El formuario recoge los datos y nos lleva a registro_socio.php. Lo mandamos como rol cliente-->
+                                                <h2> ¿ No es cliente ? </h2>           
 
+                          <form role="form" name="registro" action="registro_socio.php" method="post">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">mail</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Contrase&ntilde;a</label>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm_password">Confirmar Contrase&ntilde;a</label>
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                                </div>                
+                                <input type="hidden" value="cliente" id="rol" name="rol">
+                                <button type="submit" name="registro" class="btn btn-default">registro</button>
+                                <script src="js/valida_registro.js"></script>
+                            </form>
+                        
+                        
                     </div>
 
 

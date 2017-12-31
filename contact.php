@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE HTML>
-
+ <!--Pagina para mandar mensajes a la tienda-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -11,25 +11,9 @@
         <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <!-- Icons -->
         <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
         <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
-        <!--[if lt IE 8]>
-            <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-            <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-        <![endif]-->
         <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
-        <!--[if IE 7]>
-            <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
-        <![endif]-->
-
-
-
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Palatino+Linotype" rel="stylesheet" type="text/css">
@@ -65,16 +49,16 @@
                                             <li class="dropdown">
                                                 <a href="index.php" class="dropdown-toggle">Tienda <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="full.html">Ropa</a></li>
-                                                    <li><a href="2-column.html">Herramientas</a></li>
-                                                    <li><a href="3-column.html">Componentes</a></li>
-                                                    <li><a href="../documentation/index.html">Cascos</a></li>
+                                                    <li><a href="compras.php?tienda=ropa">Ropa</a></li>
+                                                    <li><a href="compras.php?tienda=herramientas">Herramientas</a></li>
+                                                    <li><a href="compras.php?tienda=componentes">Componentes</a></li>
+                                                    <li><a href="compras.php?tienda=casco">Cascos</a></li>
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle">Bicicletas &nbsp;&raquo;</a>
                                                         <ul class="dropdown-menu sub-menu">
-                                                            <li><a href="#">Bicicletas de carretera</a></li>
-                                                            <li><a href="#">Bicicletas de montaña</a></li>
-                                                            <li><a href="#">BMX</a></li>
+                                                            <li><a href="compras.php?tienda=carretera">Bicicletas de carretera</a></li>
+                                                            <li><a href="compras.php?tienda=montana">Bicicletas de montaña</a></li>
+                                                            <li><a href="compras.php?tienda=bmx">BMX</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -110,30 +94,30 @@
                         <h1>Contacta con nosotros</h1>
 
                         <hr>
-
+ <!--Formulario para mandar mensajes a la tienda. Si todos los datos son correctos, nos lleva a mensajes.php para insertarlos en la base de datos-->
                         <form action="mensajes.php" method="post">
                             <label>
                                 Nombre:
-                                <input name="nombre" type="text" />
+                                <input name="nombre" type="text" required/>
                             </label>
                             <label>
                                 Teléfono:
-                                <input name="telefono" type="text" />
+                                <input name="telefono" type="number" step="9" required/>
                             </label>
                             <label>
                                 Email:
-                                <input name="email" type="text" />
+                                <input name="email" type="email" required/>
                             </label>
                             <label>
                                 Mensaje:
-                                <textarea name="mensaje" rows="6" cols="50"></textarea>
+                                <textarea rows="4" cols="50" name="mensaje" required></textarea>
                             </label>
  
                             <input type="submit" name="formulario" value="Enviar" />
                         </form>
 
 
-
+ <!--iframe de google maps para mostrar un mapa con la ubicación-->
                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.5278836343846!2d-0.9249694599598884!3d41.644335282075225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd596b22f6b9f321%3A0xd6fc91a106797562!2sCPIFP+Los+Enlaces!5e0!3m2!1ses!2ses!4v1510079997871" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 											 
                     </div>

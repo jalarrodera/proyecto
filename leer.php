@@ -1,7 +1,9 @@
+<!--Pagina que muestra los mensajes sin leer-->
+
 <?php
 session_start(); //Iniciamos la Sesion o la Continuamos
 if (isset($_SESSION['usuario'])) {
-
+//Si le damos a marcar como  leido, realizamos un update y lo ponemos como leido
     if (isset($_POST["modifico"])) {
         $codigo = $_POST['codigo'];
 
@@ -88,7 +90,8 @@ if (isset($_SESSION['usuario'])) {
 
                 <div class="divPanel page-content">
 
-
+                    <!--Muestro los mensajes sin leer, realizando un select contra la base de datos y mostrandolos en un formulario
+                    para marcar los mensajes como leidos-->
                     <div class="row-fluid">
                         <h1>Mensajes sin leer</h1>
                         <div class="span8" id="divMain">
@@ -105,7 +108,6 @@ if (isset($_SESSION['usuario'])) {
                             }
                             ?>
                         </div>
-                        <!--End Main Content Area here-->
 
                     </div>
 

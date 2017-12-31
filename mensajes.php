@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE HTML>
-
+<!--Página que inserta los mensajes en la base de datos-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -7,29 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <!-- Icons -->
         <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
         <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
-        <!--[if lt IE 8]>
-            <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-            <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-        <![endif]-->
         <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
-        <!--[if IE 7]>
-            <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
-        <![endif]-->
-
-
-
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Palatino+Linotype" rel="stylesheet" type="text/css">
@@ -60,21 +42,21 @@
                                     </button>
                                     <div class="nav-collapse collapse">
                                         <ul class="nav nav-pills ddmenu">
-                                            <li class="dropdown active"><a href="index.php">Inicio</a></li>
+                                         <li class="dropdown active"><a href="index.php">Inicio</a></li>
                                             <li class="dropdown"><a href="about.php">Quienes somos</a></li>
                                             <li class="dropdown">
                                                 <a href="index.php" class="dropdown-toggle">Tienda <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="full.html">Ropa</a></li>
-                                                    <li><a href="2-column.html">Herramientas</a></li>
-                                                    <li><a href="3-column.html">Componentes</a></li>
-                                                    <li><a href="../documentation/index.html">Cascos</a></li>
+                                                    <li><a href="compras.php?tienda=ropa">Ropa</a></li>
+                                                    <li><a href="compras.php?tienda=herramientas">Herramientas</a></li>
+                                                    <li><a href="compras.php?tienda=componentes">Componentes</a></li>
+                                                    <li><a href="compras.php?tienda=casco">Cascos</a></li>
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle">Bicicletas &nbsp;&raquo;</a>
                                                         <ul class="dropdown-menu sub-menu">
-                                                            <li><a href="#">Bicicletas de carretera</a></li>
-                                                            <li><a href="#">Bicicletas de montaña</a></li>
-                                                            <li><a href="#">BMX</a></li>
+                                                            <li><a href="compras.php?tienda=carretera">Bicicletas de carretera</a></li>
+                                                            <li><a href="compras.php?tienda=montana">Bicicletas de montaña</a></li>
+                                                            <li><a href="compras.php?tienda=bmx">BMX</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -111,40 +93,39 @@
 
                         <hr>
 
-    <?php
-
-$nombre = $_POST["nombre"];
-$telefono = $_POST["telefono"];
-$email = $_POST["email"];
-$mensaje = $_POST["mensaje"];
-$leido = 'no';
-$servername = "localhost";
-$username = "phpmyadmin";
-$password = "root";
-$dbname = "proyecto";
+                        <?php
+//Recogemos los datos que nos vienen del formulario y los insertamos en la base de datos. Se insertaran como NO leidos
+                        $nombre = $_POST["nombre"];
+                        $telefono = $_POST["telefono"];
+                        $email = $_POST["email"];
+                        $mensaje = $_POST["mensaje"];
+                        $leido = 'no';
+                        $servername = "localhost";
+                        $username = "phpmyadmin";
+                        $password = "root";
+                        $dbname = "proyecto";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+                        $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
 
-$sql = "INSERT INTO mensaje (nombre,telefono, email, mensaje, leido) "
-        . "VALUES ('$nombre','$telefono','$email','$mensaje', '$leido')";
+                        $sql = "INSERT INTO mensaje (nombre,telefono, email, mensaje, leido) "
+                                . "VALUES ('$nombre','$telefono','$email','$mensaje', '$leido')";
 
 
-if ($conn->multi_query($sql) === TRUE) {
-    echo "<b>Su mensaje ha sido enviado</b></br>";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+                        if ($conn->multi_query($sql) === TRUE) {
+                            echo "<b>Su mensaje ha sido enviado</b></br>";
+                        } else {
+                            echo "Error: " . $sql . "<br>" . $conn->error;
+                        }
 
-$conn->close();
+                        $conn->close();
+                        ?>
 
-?>
 
-											 
                     </div>
 
 
@@ -242,6 +223,6 @@ $conn->close();
 
     </body>
 </html>
-    
-    
+
+
 

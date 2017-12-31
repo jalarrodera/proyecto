@@ -1,6 +1,10 @@
+<!--  Página que muestra las reservas
+Pueden estar en estado inicial o preparado.
+Lista los pedidos y gracias a un boton, se cambia el estado de las reservas-->
 <?php
 session_start(); //Iniciamos la Sesion o la Continuamos
 if (isset($_SESSION['usuario'])) {
+    //Aqui venimos desde el formulario de cambiar el estado de los pedidos a preparado. Realizamos un update para cambiar el estado.
     if (isset($_POST["preparado"])) {
         $codigo = $_POST['codigo'];
         echo $_POST['codigo'];
@@ -20,7 +24,7 @@ if (isset($_SESSION['usuario'])) {
         $conn->query($sql);
         $conn->close();
     }
-
+//Aqui venimos desde el formulario de cambiar el estado de los pedidos a servido. Realizamos un update para cambiar el estado.
     if (isset($_POST["servido"])) {
         $codigo = $_POST['codigo'];
         echo $_POST['codigo'];
@@ -102,14 +106,17 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </div>
             </div>
+
+            <!-- Cuerpo de la página -->
             <div class="container">
 
                 <div class="divPanel page-content">
 
 
                     <div class="row-fluid">
-                        <!--Edit Main Content Area here-->
                         <div class="span8" id="divMain">
+                            <!-- Realizo una consulta a la base de datos para mostrar las reservas en estado inicial. 
+                            Es a su vez en formulario. Si pulsamos el boton marcar como preparado, realizamos el update (marcar como preparado) que aparece al principio del código-->
                             <h1>Reservas con estado INICIAL</h1>
                             <?php
                             $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
@@ -117,7 +124,7 @@ if (isset($_SESSION['usuario'])) {
                             while ($registro = $resultado->fetch()) {
                                 $producto = $registro['producto'];
                                 echo "<fieldset>";
-                                echo "<legend><form name='preparado' action='#' method='post'>Cliente: <b>" . $registro['cliente'] . "</b>( " . $registro['dni'] . ") </br>"
+                                echo "<legend><form name='preparado' action='#' method='post'>Cliente: <b>" . $registro['cliente'] . "</b>( " . $registro['email'] . ") </br>"
                                 . "Producto reservado: ";
                                 $resultado2 = $conexion->query("SELECT * from producto where codigo='$producto'");
                                 while ($registro2 = $resultado2->fetch()) {
@@ -130,7 +137,8 @@ if (isset($_SESSION['usuario'])) {
                                 . "</fieldset></br></br>";
                             }
                             ?>
-
+                            <!-- Realizo una consulta a la base de datos para mostrar las reservas en estado servido. 
+                            Es a su vez en formulario. Si pulsamos el boton marcar como preparado, realizamos el update (marcar como servido) que aparece al principio del código-->
                             <h1>Reservas con estado PREPARADO</h1>
                             <?php
                             $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
@@ -138,7 +146,7 @@ if (isset($_SESSION['usuario'])) {
                             while ($registro = $resultado->fetch()) {
                                 $producto = $registro['producto'];
                                 echo "<fieldset>";
-                                echo "<legend><form name='preparado' action='#' method='post'>Cliente: <b>" . $registro['cliente'] . "</b>( " . $registro['dni'] . ") </br>"
+                                echo "<legend><form name='preparado' action='#' method='post'>Cliente: <b>" . $registro['cliente'] . "</b>( " . $registro['email'] . ") </br>"
                                 . "Producto reservado: ";
                                 $resultado2 = $conexion->query("SELECT * from producto where codigo='$producto'");
                                 while ($registro2 = $resultado2->fetch()) {

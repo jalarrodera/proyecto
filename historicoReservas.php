@@ -1,3 +1,5 @@
+
+<!--Pagina que muestra el histórico de reservas-->
 <?php
 session_start(); //Iniciamos la Sesion o la Continuamos
 if (isset($_SESSION['usuario'])) {
@@ -69,16 +71,17 @@ if (isset($_SESSION['usuario'])) {
 
 
                     <div class="row-fluid">
-                        <!--Edit Main Content Area here-->
+
                         <div class="span8" id="divMain">
                             <h1>Historico de Reservas</h1>
+                            <!--Conectamos con la base de datos y mostramos el histórico de reservas-->
                             <?php
                             $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
                             $resultado = $conexion->query("SELECT * from reservas where estado='servido' ORDER BY fecha ASC");
                             while ($registro = $resultado->fetch()) {
                                 $producto = $registro['producto'];
                                 echo "<fieldset>";
-                                echo "<legend>Cliente : <b>" . $registro['cliente'] . "</b> ( " . $registro['dni'] . ")</br>"
+                                echo "<legend>Cliente : <b>" . $registro['cliente'] . "</b> ( " . $registro['email'] . ")</br>"
                                 . "Producto reservado: ";
                                 $resultado2 = $conexion->query("SELECT * from producto where codigo='$producto'");
                                 while ($registro2 = $resultado2->fetch()) {
@@ -90,7 +93,6 @@ if (isset($_SESSION['usuario'])) {
                             }
                             ?>
                         </div>
-                        <!--End Main Content Area here-->
 
                     </div>
 

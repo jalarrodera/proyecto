@@ -1,55 +1,5 @@
 ﻿<!DOCTYPE HTML>
-<?php
-$producto = $_POST["producto"];
-$dni = $_POST["dni"];
-$cliente = $_POST["cliente"];
-$fecha = date(" Y-m-d ");
-
-$servername = "localhost";
-$username = "phpmyadmin";
-$password = "root";
-$dbname = "proyecto";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$sql = "INSERT INTO reservas (producto,cliente,fecha, dni, estado) "
-                . "VALUES ('$producto','$cliente','$fecha', '$dni', 'inicial')";
-
-
-if ($conn->multi_query($sql) === TRUE) {
-    echo "Los datos han sido insertados";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close(); 
-
-// Create connection
-$conn2 = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn2->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$sql2 = "UPDATE producto SET stock = IFNULL(stock,0) - 1 where codigo='$producto'";
-
-
-if ($conn2->multi_query($sql2) === TRUE) {
-    echo "Los datos han sido insertados";
-} else {
-    echo "Error: " . $sql2 . "<br>" . $conn->error;
-}
-
-$conn2->close(); 
-
-
- ?>  
-
+<!--Pagina que inserta las reservas en la base de datos-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -57,29 +7,11 @@ $conn2->close();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <!-- Icons -->
         <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
         <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
-        <!--[if lt IE 8]>
-            <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-            <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-        <![endif]-->
         <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
-        <!--[if IE 7]>
-            <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
-        <![endif]-->
-
-
-
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Palatino+Linotype" rel="stylesheet" type="text/css">
@@ -130,8 +62,80 @@ $conn2->close();
                     <div class="span8" id="divMain">
 
                         <?php
-                        ?>
-                        <h2> Reserva realizada con éxito</h2>           
+//recojo los datos del formulario
+                        error_reporting(E_ALL ^ E_NOTICE);
+                        session_start();
+
+                        $producto = $_POST["producto"];
+                        $email = $_POST["email"];
+                        $cliente = $_POST["cliente"];
+                        $fecha = date(" Y-m-d ");
+
+                        $servername = "localhost";
+                        $username = "phpmyadmin";
+                        $password = "root";
+                        $dbname = "proyecto";
+
+
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+                        if ($conn->connect_error) {
+                            die("Error de conexion: ");
+                        }
+//Compruebo que el usuario que realiza la reserva es válido. Solo permite usuario registrados
+                        if ($resultado = mysqli_query($conn, "SELECT * FROM usuario where email='$email'")) {
+
+                            if (mysqli_num_rows($resultado) == 1) {
+
+
+// Create connection
+                                $conn1 = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+                                if ($conn1->connect_error) {
+                                    die("Error de conexion: ");
+                                }
+//inserta en la base de datos la reserva con estado inicial
+                                $sql1 = "INSERT INTO reservas (producto,cliente,fecha, email, estado) "
+                                        . "VALUES ('$producto','$cliente','$fecha', '$email', 'inicial')";
+
+//avisamos de que se ha realizado y redireccionamos
+                                if ($conn1->multi_query($sql1) === TRUE) {
+                                    echo "<h1>RESERVA REALIZADA CORRECTAMENTE</h1>"
+                                    . "<p>Usted sera redirigido en 5 segundos.</p>";
+                                    header("refresh:5;url=index.php");
+
+                                    // Create connection
+                                    $conn2 = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+                                    if ($conn2->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
+
+                                    $sql2 = "UPDATE producto SET stock = IFNULL(stock,0) - 1 where codigo='$producto'";
+
+
+                                    if ($conn2->multi_query($sql2) === FALSE) {
+                                        echo "Se ha producido un error con la venta";
+                                    }
+
+                                    $conn2->close();
+                                } else {
+                                    echo "El usuario no existe o no es válido. Por favor, registrese o vuelva a intentarlo.";
+                                    echo "Error: " . $sql1 . "<br>" . $conn1->error;
+                                }
+
+                                $conn1->close();
+                            }
+                            echo "El usuario no existe o no es válido. Por favor, registrese o vuelva a intentarlo.";
+                        } else {
+
+                            echo "El usuario no existe o no es válido. Por favor, registrese o vuelva a intentarlo.";
+                        }
+                        /* liberar el conjunto de resultados */
+                        mysqli_free_result($resultado);
+                        $conn->close();
+                        ?>  
+
 
 
 

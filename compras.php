@@ -3,9 +3,9 @@
 
     <?php
     $tienda = $_GET['tienda'];
-    if (isset($_POST['hola'])) {
-        echo $_POST['hola'];
-    }
+    //if (isset($_POST['hola'])) {
+     //   echo $_POST['hola'];
+    //}
     ?>
 
     <head>
@@ -14,29 +14,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <!-- Icons -->
         <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
         <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
-        <!--[if lt IE 8]>
-            <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-            <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
-        <![endif]-->
         <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
-        <!--[if IE 7]>
-            <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
-        <![endif]-->
-
-
-
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Palatino+Linotype" rel="stylesheet" type="text/css">
@@ -112,15 +95,17 @@
                 </div> 
 
                 <div class="row-fluid">
-                    <!--Edit Main Content Area here-->
+
                     <div class="span8" id="divMain">
                         <h1>¡No olvides pasarte por la tienda a ver nuestros productos!</h1>
                         <?php
+                        //Con un switch, mostramos el tipo de articulo, en funcion de la categoría elegida en el menú
                         switch ($tienda) {
                             case "ropa":
                                 ?>
                                 <h1>ROPA</h1>
                                 <?php
+                                //conectamos con la base de datos y realizamos un select. Mostramos en una tabla el producto.
                                 $conexion = new PDO("mysql:host=localhost;dbname=proyecto", "phpmyadmin", "root");
                                 $resultado = $conexion->query("SELECT * from producto where categoria='ropa'");
                                 while ($registro = $resultado->fetch()) {
@@ -134,17 +119,18 @@
                                     echo "<b>Producto: </b>" . $registro['nombre'] . "</br>";
                                     echo "<b>Marca: </b> " . $registro['marca'] . "</br>";
                                     if ($registro['stock'] <= 0) {
-                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>";
+                                        echo "<b><font color='red'>¡No quedan unidades!</font></b></br>"; //Si no hay stock, mostramos en rojo que no hay stock
                                     } else {
                                         echo "<b>Stock disponible: </b> " . $registro['stock'] . "</br>";
                                     }
                                     if ($registro['descuento'] > 0) {
-                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";
+                                        echo "<b><font color='red'>¡Éste artículo tiene un " . $registro['descuento'] . "% de descuento!</font></b></br>";//si existe un descuento, lo mostramos en rojo
                                     }
                                     echo "<b>PVP: </b> " . ($registro['precio'] - ($registro['precio'] * $registro['descuento']) / 100) . " €</br>";
                                     echo "</td></tr></table></br>";
                                     if ($registro['stock'] > 0) {
                                         ?>
+                                     <!--Formulario para reservar. Coge el código del producto y el nombre, y nos envía a reservas.php-->
                                         <form role="form" name="reservas" action="reservas.php" method="post">  
                                             <input type="hidden" value="<?php echo $registro['codigo'] ?>" name="codigo">
                                             <input type="hidden" value="<?php echo $registro['nombre'] ?>" name="producto">
